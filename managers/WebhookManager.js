@@ -31,14 +31,15 @@ class WebhookManager extends BaseManager {
     async __init() {
         this.url = await ngrok.connect(this.client.port);
         const token = await this.client.__getToken();
+        const headers = {
+            "client-id": this.client.__clientID,
+            "Authorization": `Bearer ${token}`,
+        }
         for (const channel of this.client.channels.cache.values()) {
             for (const subType of types) {
                 request.get({
                     url: 'https://api.twitch.tv/helix/eventsub/subscriptions',
-                    headers: {
-                        "client-id": this.client.__clientID,
-                        "Authorization": `Bearer ${token}`,
-                    },
+                    headers,
                     method: 'GET',
                     json: true,
                 }, (err, res, body) => {
@@ -46,20 +47,14 @@ class WebhookManager extends BaseManager {
                         const { id } = data;
                         request.delete({
                             url: `https://api.twitch.tv/helix/eventsub/subscriptions?id=${id}`,
-                            headers: {
-                                'client-id': this.client.__clientID,
-                                'Authorization': `Bearer ${token}`
-                            },
+                            headers,
                             method: 'DELETE',
                             json: true,
                         });
                     }
                     request.post({
                         url: `https://api.twitch.tv/helix/eventsub/subscriptions`,
-                        headers: {
-                            "client-id": this.client.__clientID,
-                            "Authorization": `Bearer ${token}`,
-                        },
+                        headers,
                         json: true,
                         body: {
                             "type": subType,
