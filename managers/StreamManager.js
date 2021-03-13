@@ -35,8 +35,8 @@ class StreamManager extends BaseManager {
                 }
             }
         } else {
-            this.cache.forEach(async channel => {
-                await channel.fetch(force);
+            this.cache.forEach(async stream => {
+                await stream.fetch(force);
             });
         }
         return this;

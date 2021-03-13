@@ -47,13 +47,11 @@ class WebhookManager extends BaseManager {
                         request.delete({
                             url: `https://api.twitch.tv/helix/eventsub/subscriptions?id=${id}`,
                             headers: {
-                                'client-id': 'o17d0nhi84yp19amsbdncik7v81hl9',
-                                'Authorization': 'Bearer ' + token
+                                'client-id': this.client.__clientID,
+                                'Authorization': `Bearer ${token}`
                             },
                             method: 'DELETE',
                             json: true,
-                        }, (err, res, body) => {
-
                         });
                     }
                     request.post({
@@ -77,7 +75,6 @@ class WebhookManager extends BaseManager {
                                 "secret": this.client.__clientSecret,
                             }
                         }
-                    }, (err, res, body) => {
                     });
                 });
             }
