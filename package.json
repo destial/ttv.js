@@ -1,5 +1,5 @@
 {
-  "name": "ttv.js",
+  "name": "ttv",
   "version": "1.1.0",
   "description": "A node.js module that interacts with the Twitch API.",
   "main": "index.js",
@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "ngrok": "^3.4.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "express": "^4.17.1"
@@ -22,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/destial/twitchjs/issues"
   },
-  "homepage": "https://github.com/destial/twitchjs#readme"
+  "homepage": "https://github.com/destial/twitchjs#readme",
+  "keywords": [
+    "twitch",
+    "api",
+    "nodejs",
+    "events",
+    "follow",
+    "raid",
+    "update",
+    "stream",
+    "online",
+    "offline"
+  ]
 }

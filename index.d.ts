@@ -1,4 +1,4 @@
-declare module 'twitchjs' {
+declare module 'ttv.js' {
     export class Client {
         constructor(ClientOptions: ClientOptions);
         channels: ChannelManager;
